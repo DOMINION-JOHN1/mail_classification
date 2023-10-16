@@ -28,15 +28,8 @@ def preprocess(mail_text):
     return scaled_features
 
 
-# Mounting drive so the model can be loaded from google drive
-from google.colab import drive
-drive.mount('/content')
-
-# Define the path to your model file in Google Drive
-model_path = '/content/spam_classifier_model.pkl'
-
 # Load the model
-model = joblib.load(model_path)
+model = joblib.load('spam_classifier_model.pkl')
 
 
 # Streamlit UI

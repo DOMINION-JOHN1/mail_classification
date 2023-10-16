@@ -9,7 +9,7 @@ Original file is located at
 
 import streamlit as st
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer  # Corrected import statement
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -27,10 +27,8 @@ def preprocess(mail_text):
 
     return scaled_features
 
-
 # Load the model
 model = joblib.load('spam_classifier_model.pkl')
-
 
 # Streamlit UI
 st.title("Mail Classifier")

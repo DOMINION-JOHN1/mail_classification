@@ -9,10 +9,8 @@ Original file is located at
 
 import streamlit as st
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer  # Corrected import statement
-from sklearn.preprocessing import StandardScaler
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
 import joblib
 
 # Load the model
@@ -27,7 +25,11 @@ mail_text = st.text_area("Enter an email message:")
 
 if st.button("Predict"):
     if mail_text:
-        prediction = model.predict(mail_text)
+        # Create a list with a single text message
+        text_list = [mail_text]
+
+        # Make a prediction using the model
+        prediction = model.predict(text_list)
 
         if prediction == 0:
             st.success("Prediction: Ham (Not Spam)")

@@ -19,11 +19,11 @@ import joblib
 def preprocess(mail_text):
     # Step 1: TF-IDF Vectorization
     tfidf_vectorizer = TfidfVectorizer()
-    mail_tfidf = tfidf_vectorizer.transform([mail_text])
+    mail_tfidf = tfidf_vectorizer.fit_transform([mail_text])
 
     # Step 2: Standard Scaling
     scaler = StandardScaler(with_mean=False)
-    scaled_features = scaler.transform(mail_tfidf)
+    scaled_features = scaler.fit_transform(mail_tfidf)
 
     return scaled_features
 

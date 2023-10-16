@@ -16,7 +16,7 @@ from sklearn.pipeline import Pipeline
 import joblib
 
 # Load the model
-model = joblib.load('spam_classifier_model(1).pkl')
+model = joblib.load('spam_classifier_model.pkl')
 
 # Streamlit UI
 st.title("Mail Classifier")

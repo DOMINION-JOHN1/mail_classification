@@ -15,20 +15,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 import joblib
 
-# Define a preprocessing function
-def preprocess(mail_text):
-    # Step 1: TF-IDF Vectorization
-    tfidf_vectorizer = TfidfVectorizer()
-    mail_tfidf = tfidf_vectorizer.fit_transform([mail_text])
-
-    # Step 2: Standard Scaling
-    scaler = StandardScaler(with_mean=False)
-    scaled_features = scaler.fit_transform(mail_tfidf)
-
-    return scaled_features
-
 # Load the model
-model = joblib.load('spam_classifier_model.pkl')
+model = joblib.load('spam_classifier_model(1).pkl')
 
 # Streamlit UI
 st.title("Mail Classifier")
@@ -39,9 +27,7 @@ mail_text = st.text_area("Enter an email message:")
 
 if st.button("Predict"):
     if mail_text:
-        # Preprocess the input data and make a prediction
-        preprocessed_data = preprocess(mail_text)
-        prediction = model.predict(preprocessed_data)
+        prediction = model.predict(mail_text)
 
         if prediction == 0:
             st.success("Prediction: Ham (Not Spam)")
